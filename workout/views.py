@@ -2,7 +2,6 @@
 import hashlib
 import hmac
 import os
-import requests
 from http.client import HTTPException
 import git
 from django.http import HttpResponse
