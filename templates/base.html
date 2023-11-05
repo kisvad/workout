@@ -22,19 +22,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Menu1</a>
+                <a class="nav-link active" aria-current="page" href="#">ABC</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Menu2</a>
+                <a class="nav-link" href="#">DEF</a>
               </li>
             </ul>
             <ul class="navbar-nav d-flex">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Menu2</a>
                     </li>
                 {% else %}
                 <li class="nav-item">
