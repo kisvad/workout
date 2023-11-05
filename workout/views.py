@@ -26,7 +26,7 @@ def update(request):
         # x_hub_signature = request.headers.get('X-Hub-Signature-256')
         # verify_signature(request.body(), w_key, x_hub_signature)
 
-        payload_body = request.body()
+        payload_body = request.body
         hash_object = hmac.new(w_key.encode('utf-8'), msg=payload_body, digestmod=hashlib.sha256)
         expected_signature = "sha256=" + hash_object.hexdigest()
 
