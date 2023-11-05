@@ -24,19 +24,14 @@ def update(request):
         """
     if request.method == "POST":
         x_hub_signature = request.headers.get('X-Hub-Signature-256')
-        # verify_signature(request.body(), w_key, x_hub_signature)
-
-        payload_body = request.body
-        hash_object = hmac.new(w_key.encode('utf-8'), msg=payload_body, digestmod=hashlib.sha256)
-        expected_signature = "sha256=" + hash_object.hexdigest()
+        verify_signature(request.body(), w_key, x_hub_signature)
 
         repo = git.Repo("./workout")
         origin = repo.remotes.origin
 
         origin.pull()
 
-        # return HttpResponse("Updated code on PythonAnywhere")
-        return HttpResponse("E:" + expected_signature + "R: " + x_hub_signature)
+        return HttpResponse("Updated code on PythonAnywhere")
     else:
         return HttpResponse("Couldn't update the code on PythonAnywhere")
 
