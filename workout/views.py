@@ -23,7 +23,7 @@ def update(request):
         Here the name of my directory is "test.pythonanywhere.com"
         """
     if request.method == "POST":
-        # x_hub_signature = request.headers.get('X-Hub-Signature-256')
+        x_hub_signature = request.headers.get('X-Hub-Signature-256')
         # verify_signature(request.body(), w_key, x_hub_signature)
 
         payload_body = request.body
@@ -36,7 +36,7 @@ def update(request):
         origin.pull()
 
         # return HttpResponse("Updated code on PythonAnywhere")
-        return HttpResponse(expected_signature)
+        return HttpResponse("E:" + expected_signature + "R: " + x_hub_signature)
     else:
         return HttpResponse("Couldn't update the code on PythonAnywhere")
 
