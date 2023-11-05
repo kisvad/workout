@@ -2,6 +2,7 @@
 import hashlib
 import hmac
 import os
+import requests
 from http.client import HTTPException
 import git
 from django.http import HttpResponse
@@ -24,14 +25,15 @@ def update(request):
         """
     if request.method == "POST":
         x_hub_signature = request.headers.get('X-Hub-Signature-256')
-        verify_signature(request.body(), w_key, x_hub_signature)
+        # verify_signature(request.body(), w_key, x_hub_signature)
 
-        repo = git.Repo("./workout")
-        origin = repo.remotes.origin
+        # repo = git.Repo("./workout")
+        # origin = repo.remotes.origin
 
-        origin.pull()
+        # origin.pull()
 
-        return HttpResponse("Updated code on PythonAnywhere")
+        # return HttpResponse("Updated code on PythonAnywhere")
+        return HttpResponse(x_hub_signature)
     else:
         return HttpResponse("Couldn't update the code on PythonAnywhere")
     
