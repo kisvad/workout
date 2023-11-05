@@ -23,9 +23,9 @@ def update(request):
         Here the name of my directory is "test.pythonanywhere.com"
         """
     if request.method == "POST":
-        x_hub_signature = request.headers.get('x-hub-signature-256')
+        x_hub_signature = request.headers.get('X-Hub-Signature-256')
         verify_signature(request.body(), w_key, x_hub_signature)
-        
+
         repo = git.Repo("./workout")
         origin = repo.remotes.origin
 
