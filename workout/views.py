@@ -24,7 +24,7 @@ def update(request):
         """
     if request.method == "POST":
         x_hub_signature = request.headers.get('X-Hub-Signature-256')
-        verify_signature(request.body(), w_key, x_hub_signature)
+        verify_signature(request.body, w_key, x_hub_signature)
 
         repo = git.Repo("./workout")
         origin = repo.remotes.origin
