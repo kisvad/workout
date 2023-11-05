@@ -26,7 +26,8 @@ def update(request):
         # x_hub_signature = request.headers.get('X-Hub-Signature-256')
         # verify_signature(request.body(), w_key, x_hub_signature)
 
-        hash_object = hmac.new(w_key.encode('utf-8'), msg=request.body(), digestmod=hashlib.sha256)
+        payload_body = request.body()
+        hash_object = hmac.new(w_key.encode('utf-8'), msg=payload_body, digestmod=hashlib.sha256)
         expected_signature = "sha256=" + hash_object.hexdigest()
 
         repo = git.Repo("./workout")
@@ -38,7 +39,8 @@ def update(request):
         return HttpResponse(expected_signature)
     else:
         return HttpResponse("Couldn't update the code on PythonAnywhere")
-    
+
+
 def verify_signature(payload_body, secret_token, signature_header):
     """Verify that the payload was sent from GitHub by validating SHA256.
 
