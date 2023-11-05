@@ -17,10 +17,12 @@ def update(request):
         Here the name of my directory is "test.pythonanywhere.com"
         """
     # if request.method == "POST":
-        repo = git.Repo("")
-        origin = repo.remotes.origin
+    repo = git.Repo("")
+    origin = repo.remotes.origin
 
-        origin.pull()
+    origin.pull()
+
+    HttpResponse("Ran the code")
 
     #     return HttpResponse("Updated code on PythonAnywhere")
     # else:
