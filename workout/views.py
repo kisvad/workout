@@ -17,7 +17,7 @@ def update(request):
         Here the name of my directory is "test.pythonanywhere.com"
         """
     if request.method == "POST":
-        repo = git.Repo("/home/kkovacs/workout")
+        repo = git.Repo("https://kkovacs.pythonanywhere.com/workout.git")
         origin = repo.remotes.origin
 
         origin.pull()
