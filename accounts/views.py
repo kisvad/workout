@@ -34,7 +34,7 @@ class ActivateView(RedirectView):
     url = reverse_lazy('accounts:success')
 
     # Custom get method
-    def get(self, request, uidb64=None, token=None):
+    def get(self, request, uidb64, token):
 
         try:
             uid = force_str(urlsafe_base64_decode(uidb64))
