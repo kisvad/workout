@@ -1,5 +1,4 @@
 """Module adding models for accounts app."""
-from django.db import models
 from django.contrib import auth
 
 # Create your models here.
