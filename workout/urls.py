@@ -25,6 +25,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('accounts/', include('django.contrib.auth.urls')),
     path("update_server/", views.update, name="update"),
+    path('routines/', include('routines.urls'), name='routines'),
 ]
 
 if settings.DEBUG:
