@@ -2,7 +2,6 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, RedirectView
 from django.contrib.auth import login
-from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str # force_text on older versions of Django
@@ -35,7 +34,7 @@ class ActivateView(RedirectView):
     url = reverse_lazy('accounts:success')
 
     # Custom get method
-    def get(self, request, uidb64, token):
+    def get(self, request, uidb64=None, token=None):
 
         try:
             uid = force_str(urlsafe_base64_decode(uidb64))
